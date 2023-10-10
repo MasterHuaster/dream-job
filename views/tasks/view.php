@@ -4,7 +4,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Task */
 
-$this->title = $model->name;
+$this->title = $model->title;
 ?>
 <div>
     <h1><?= Html::encode($this->title) ?></h1>
@@ -13,7 +13,7 @@ $this->title = $model->name;
     <?= Html::a('Delete', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
 
     <div>
-        <strong>Name:</strong> <?= Html::encode($model->name) ?><br>
+        <strong>Title:</strong> <?= Html::encode($model->title) ?><br>
         <strong>Description:</strong> <?= Html::encode($model->description) ?><br>
         <strong>Priority:</strong> <?= Html::encode($model->priority) ?><br>
         <strong>Status:</strong> <?= Html::encode($model->status) ?><br>

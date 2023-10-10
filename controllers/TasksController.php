@@ -1,33 +1,17 @@
 <?php
+
 namespace app\controllers;
 
 use Yii;
-use app\models\Task;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\web\Response;
+use app\models\Task;
 
 class TasksController extends Controller
 {
     /**
-     * @inheritdoc
-     */
-    public function behaviors(): array
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * Lists all tasks.
+     * Displays the list of tasks.
      *
      * @return string
      */
@@ -50,19 +34,25 @@ class TasksController extends Controller
      *
      * @param int $id
      * @return string
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if task model cannot be found.
      */
     public function actionView(int $id): string
     {
+        $model = Task::findOne($id);
+
+        if (!$model) {
+            throw new NotFoundHttpException('The requested task does not exist.');
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
     /**
      * Creates a new task.
      *
-     * @return string|Response
+     * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
@@ -81,12 +71,16 @@ class TasksController extends Controller
      * Updates an existing task.
      *
      * @param int $id
-     * @return string|Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException if task model cannot be found.
      */
     public function actionUpdate(int $id)
     {
-        $model = $this->findModel($id);
+        $model = Task::findOne($id);
+
+        if (!$model) {
+            throw new NotFoundHttpException('The requested task does not exist.');
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -101,30 +95,19 @@ class TasksController extends Controller
      * Deletes an existing task.
      *
      * @param int $id
-     * @return Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if task model cannot be found.
      */
-    public function actionDelete(int $id): Response
+    public function actionDelete(int $id): \yii\web\Response
     {
-        $this->findModel($id)->delete();
+        $task = Task::findOne($id);
 
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Task model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     *
-     * @param int $id
-     * @return Task the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel(int $id): Task
-    {
-        if (($model = Task::findOne($id)) !== null) {
-            return $model;
+        if (!$task) {
+            throw new NotFoundHttpException('The requested task does not exist.');
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        $task->delete();
+
+        return $this->redirect(['index']);
     }
 }
