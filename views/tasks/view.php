@@ -10,16 +10,10 @@ $this->title = $model->title;
     <div class="card">
         <div class="card-header">
             <h2 class="card-title"><?= Html::encode($this->title) ?></h2>
-        </div>
-        <div class="card-body">
-            <div class="mb-3">
-                <h4 class="card-subtitle mb-2">Название:</h4>
-                <p class="card-text"><?= Html::encode($model->title) ?>
                 <span class="badge bg-secondary"><?= $model->getPriorityLabel() ?></span>
                 <span class="badge bg-info"><?= $model->getStatusLabel() ?></span>
-                </p>
-            </div>
-
+        </div>
+        <div class="card-body">
             <div class="mb-3">
                 <h4 class="card-subtitle mb-2">Описание:</h4>
                 <p class="card-text"><?= Html::encode($model->description) ?></p>

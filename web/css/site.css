@@ -86,3 +86,8 @@ a.desc:after {
 .form-group {
     margin-bottom: 1rem;
 }
+
+body .table thead th a {
+    color: inherit;
+    text-decoration: none;
+}

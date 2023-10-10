@@ -20,7 +20,7 @@ class TasksController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Task::find(),
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 10,
             ],
         ]);
 
