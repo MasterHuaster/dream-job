@@ -42,14 +42,18 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'tasks' => 'tasks/index',
+                'tasks/view/<id:\d+>' => 'tasks/view',
+                'tasks/create' => 'tasks/create',
+                'tasks/update/<id:\d+>' => 'tasks/update',
+                'tasks/delete/<id:\d+>' => 'tasks/delete',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

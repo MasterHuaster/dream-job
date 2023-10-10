@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Task;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -32,10 +33,15 @@ class TasksController extends Controller
      */
     public function actionIndex(): string
     {
-        $tasks = Task::find()->all();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Task::find(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
 
         return $this->render('index', [
-            'tasks' => $tasks,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
