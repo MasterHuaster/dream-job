@@ -6,6 +6,17 @@ use yii\db\ActiveRecord;
 
 class Task extends ActiveRecord
 {
+    const PRIORITY = [
+        'LOW' => 'Низкий',
+        'MEDIUM' => 'Средний',
+        'HIGH' => 'Высокий',
+    ];
+
+    const STATUSES = [
+        'PENDING' => 'В работе',
+        'COMPLETED' => 'Завершено',
+    ];
+
     public static function tableName()
     {
         return 'tasks';
@@ -31,26 +42,16 @@ class Task extends ActiveRecord
             'description' => 'Описание',
             'priority' => 'Приоритет',
             'status' => 'Статус',
+            'created_at' => 'Дата создания',
         ];
     }
 
     public function getPriorityLabel(): string {
-        $priorities = [
-            'LOW' => 'Низкий',
-            'MEDIUM' => 'Средний',
-            'HIGH' => 'Высокий',
-        ];
-
-        return $priorities[$this->priority] ?? 'Не определено';
+        return Task::PRIORITY[$this->priority] ?? 'Не определено';
     }
 
     public function getStatusLabel(): string {
-        $statuses = [
-            'PENDING' => 'В работе',
-            'COMPLETED' => 'Завершено',
-        ];
-
-        return $statuses[$this->status] ?? 'Не определено';
+        return Task::STATUSES[$this->status] ?? 'Не определено';
     }
 
 }
