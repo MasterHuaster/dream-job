@@ -5,24 +5,24 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tasks';
+$this->title = 'Мой To-Do лист';
 ?>
 <div>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать задачу', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'emptyText' => 'Нет записей',
         'columns' => [
             'id',
-            'name',
-            'description',
-            'priority',
-            'status',
-
+            'Название',
+            'Описание',
+            'Приоритет',
+            'Статус',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

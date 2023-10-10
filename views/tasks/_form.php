@@ -15,18 +15,18 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'priority')->dropDownList([
-        'LOW' => 'LOW',
-        'MEDIUM' => 'MEDIUM',
-        'HIGH' => 'HIGH',
+        'LOW' => 'Низкий',
+        'MEDIUM' => 'Средний',
+        'HIGH' => 'Высокий',
     ]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([
-        'PENDING' => 'PENDING',
-        'COMPLETED' => 'COMPLETED',
+        'PENDING' => 'В работе',
+        'COMPLETED' => 'Завершено',
     ]) ?>
 
     <div>
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

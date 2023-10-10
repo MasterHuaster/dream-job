@@ -6,16 +6,29 @@ use yii\helpers\Html;
 
 $this->title = $model->title;
 ?>
-<div>
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title"><?= Html::encode($this->title) ?></h2>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <h4 class="card-subtitle mb-2">Название:</h4>
+                <p class="card-text"><?= Html::encode($model->title) ?>
+                <span class="badge bg-secondary"><?= $model->getPriorityLabel() ?></span>
+                <span class="badge bg-info"><?= $model->getStatusLabel() ?></span>
+                </p>
+            </div>
 
-    <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a('Delete', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
-
-    <div>
-        <strong>Title:</strong> <?= Html::encode($model->title) ?><br>
-        <strong>Description:</strong> <?= Html::encode($model->description) ?><br>
-        <strong>Priority:</strong> <?= Html::encode($model->priority) ?><br>
-        <strong>Status:</strong> <?= Html::encode($model->status) ?><br>
+            <div class="mb-3">
+                <h4 class="card-subtitle mb-2">Описание:</h4>
+                <p class="card-text"><?= Html::encode($model->description) ?></p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <?= Html::a('Изменить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Удалить', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+            </div>
+        </div>
     </div>
 </div>
+

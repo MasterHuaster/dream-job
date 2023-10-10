@@ -23,4 +23,34 @@ class Task extends ActiveRecord
             ['status', 'in', 'range' => ['PENDING', 'COMPLETED']],
         ];
     }
+
+    public function attributeLabels()
+    {
+        return [
+            'title' => 'Название',
+            'description' => 'Описание',
+            'priority' => 'Приоритет',
+            'status' => 'Статус',
+        ];
+    }
+
+    public function getPriorityLabel(): string {
+        $priorities = [
+            'LOW' => 'Низкий',
+            'MEDIUM' => 'Средний',
+            'HIGH' => 'Высокий',
+        ];
+
+        return $priorities[$this->priority] ?? 'Не определено';
+    }
+
+    public function getStatusLabel(): string {
+        $statuses = [
+            'PENDING' => 'В работе',
+            'COMPLETED' => 'Завершено',
+        ];
+
+        return $statuses[$this->status] ?? 'Не определено';
+    }
+
 }

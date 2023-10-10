@@ -4,7 +4,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Task */
 
-$this->title = 'Create Task';
+$this->title = 'Создать задачу';
 ?>
 <div>
     <h1><?= Html::encode($this->title) ?></h1>
