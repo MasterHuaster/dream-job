@@ -14,7 +14,7 @@ INSTALLATION
 ------------
 Just copy the project from the repository
 ~~~
-git clone http://sources.rpulse.tk/homeless-people/DreamJob.git
+git clone https://github.com/MasterHuaster/dream-job.git
 ~~~
 Install the necessary packages
 ~~~
